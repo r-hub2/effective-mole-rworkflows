@@ -49,7 +49,8 @@ vignette1 <- rworkflows::use_vignette_getstarted(package = "mypackage",
 
 ## -----------------------------------------------------------------------------
 ## Use default save_dir in practice
-vignette2 <- rworkflows::use_vignette_docker(docker_org = "neurogenomics",
+vignette2 <- rworkflows::use_vignette_docker(package = "mypackage",
+                                             docker_org = "neurogenomics",
                                              save_dir = tempdir())
 
 ## ----eval=has_net-------------------------------------------------------------

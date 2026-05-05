@@ -147,7 +147,8 @@ If you're using the GitHub Container Registry, `docker_org` can simply be your
 GH organization name or user name.
 ```{r}
 ## Use default save_dir in practice
-vignette2 <- rworkflows::use_vignette_docker(docker_org = "neurogenomics",
+vignette2 <- rworkflows::use_vignette_docker(package = "mypackage",
+                                             docker_org = "neurogenomics",
                                              save_dir = tempdir())
 ```
 

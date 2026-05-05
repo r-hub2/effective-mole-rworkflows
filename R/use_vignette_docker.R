@@ -65,6 +65,12 @@ use_vignette_docker <- function(package = names(get_description()),
                                 verbose=TRUE){
   # devoptera::args2vars(use_vignette_docker, reassign = TRUE)
 
+  force(package)
+  if (length(package) != 1L || is.na(package) || !nzchar(package)) {
+    stop("`package` must be a non-empty string. ",
+         "Could not be inferred from a local DESCRIPTION; ",
+         "pass `package` explicitly.")
+  }
   #### Check if file exists already ####
   if(file.exists(path) &
      isFALSE(force_new)){
