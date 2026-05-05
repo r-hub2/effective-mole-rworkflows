@@ -21,7 +21,8 @@
 resources:
     - Add `testthat::skip_if_offline()` to all tests whose call stacks may
       reach the internet (`test-check_bioc_version.R`, `test-fill_description.R`,
-      `test-get_authors.R`, `test-get_hex.R`, `test-infer_deps.R`).
+      `test-get_authors.R`, `test-get_hex.R`, `test-infer_biocviews.R`,
+      `test-infer_deps.R`).
     - Move the existing offline guard up in `test-construct_cont.R` so that
       the `versions_explicit = TRUE` branch (which calls `bioc_r_versions()`)
       is also skipped when offline.
@@ -68,11 +69,14 @@ and vignettes.
   `ghcr.io`) so individual tests skip when their actual remote is
   unreachable. This includes the `get_description` Bioc-repo block,
   which previously gated on `is_gha() | is_rstudio()` to dodge CRAN
-  flakiness (#65); it now skips on `bioconductor.org` instead.
-  `is_gha()` is retained only for the `construct_conda_yml`
-  env-creation block, where the test is genuinely GHA-only (creates
-  and leaves a conda env behind, so should not run on developer
-  machines).
+  flakiness (#65); it now skips on `bioconductor.org` instead. Each
+  `skip_if_offline()` is then wrapped in `if (!is_gha())` so GitHub
+  Actions exercises the network path regardless of the offline probe;
+  developer machines and CRAN's check farm continue to skip when the
+  named host is unreachable. `is_gha()` is also retained for the
+  `construct_conda_yml` env-creation block, where the test is
+  genuinely GHA-only (creates and leaves a conda env behind, so should
+  not run on developer machines).
 
 # rworkflows 1.0.11
 

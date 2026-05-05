@@ -1,4 +1,4 @@
-testthat::skip_if_offline(host = "github.com")
+if (!is_gha()) testthat::skip_if_offline(host = "github.com")
 test_that("get_description works", {
   
   run_tests <- function(dl){
@@ -22,8 +22,8 @@ test_that("get_description works", {
                         paths="typo")
   d6 <- get_description(refs=NULL, 
                         paths="typo")
-  d7 <- get_description(refs=NULL, 
-                        paths=here::here("DESCRIPTION")
+  d7 <- get_description(refs=NULL,
+                        paths=system.file("DESCRIPTION", package="rworkflows")
                         )
   d8 <- get_description(refs=c("stats","data.table"), 
                         paths=NULL)
@@ -60,7 +60,7 @@ test_that("get_description works", {
                          d1[[1]])
 
   #### Search CRAN/Bioc repos ####
-  testthat::skip_if_offline(host = "bioconductor.org")
+  if (!is_gha()) testthat::skip_if_offline(host = "bioconductor.org")
   #### Run first time ####
   d13a <- get_description(refs="ABSSeq",
                          db = rworkflows::biocpkgtools_db,

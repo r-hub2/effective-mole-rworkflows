@@ -1,5 +1,5 @@
 test_that("get_hex works", {
-  testthat::skip_if_offline(host = "github.com")
+  if (!is_gha()) testthat::skip_if_offline(host = "github.com")
 
   #### When repo name provided ####
   hex1 <- get_hex(refs="neurogenomics/rworkflows")
@@ -8,8 +8,8 @@ test_that("get_hex works", {
   testthat::expect_equal(hex2$rworkflows,
                          hex1$`neurogenomics/rworkflows`)  
   #### When DESCRIPTION path provided ####
-  hex3 <- get_hex(refs=NULL, 
-                  paths=here::here("DESCRIPTION"))
+  hex3 <- get_hex(refs=NULL,
+                  paths=system.file("DESCRIPTION", package="rworkflows"))
   testthat::expect_equal(hex3[[1]],
                          hex1[[1]])
   #### When neither refs nor paths provided ####
