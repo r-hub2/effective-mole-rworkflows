@@ -49,7 +49,7 @@ Config/testthat/edition: 3
 LazyData: true
 RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2026-05-05 14:53:23 UTC; hdash
+Packaged: 2026-05-05 15:07:10 UTC; hdash
 Author: Brian Schilder [aut] (ORCID: <https://orcid.org/0000-0001-5949-2191>),
   Alan Murphy [aut, ctb] (ORCID: <https://orcid.org/0000-0002-2487-8753>),
   Hiranyamaya (Hiru) Dash [ctb, cre] (ORCID:
