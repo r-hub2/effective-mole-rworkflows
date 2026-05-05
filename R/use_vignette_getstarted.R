@@ -38,8 +38,9 @@ use_vignette_getstarted <- function(package = names(get_description()),
                                  package = "rworkflows")
     #### Edit the yaml header ###
     l <- readLines(template_path)
+    l <- gsub("__PKG__", package, l, fixed = TRUE)
     yml_lines <- seq(grep("---",l)[1],
-                     rev(grep("---",l))[1] ) 
+                     rev(grep("---",l))[1] )
     yml <- yaml::read_yaml(text = l[yml_lines]) 
     ## vignette title
     yml$title <- title 

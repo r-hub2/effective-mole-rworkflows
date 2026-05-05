@@ -4,7 +4,7 @@ list(cont = "ghcr.io/neurogenomics/rworkflows", docker_registry = "ghcr.io",
 
 ## ----setup, include=FALSE-----------------------------------------------------
 #### Package name ####
-PKG <- read.dcf("../DESCRIPTION", fields = "Package")[1]
+PKG <- "rworkflows"
 library(PKG, character.only = TRUE)
 ## Docker containers must be lowercase
 pkg <- tolower(PKG)

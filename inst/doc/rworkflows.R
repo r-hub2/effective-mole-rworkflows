@@ -1,5 +1,5 @@
 ## ----echo=FALSE, include=FALSE------------------------------------------------
-pkg <- read.dcf("../DESCRIPTION", fields = "Package")[1]
+pkg <- "rworkflows"
 library(pkg, character.only = TRUE)
 ## Skip internet-dependent chunks gracefully when offline
 has_net <- requireNamespace("curl", quietly = TRUE) && curl::has_internet()
